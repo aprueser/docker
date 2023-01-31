@@ -1,0 +1,21 @@
+version: '2'
+
+networks:
+  default:
+    name: app-local
+    external: true
+
+volumes:
+  source_code:
+    name: source_code
+    external: true
+
+services:
+  juliadev:
+    container_name: juliadev
+    hostname: juliadev
+    image: aprueser/juliadev:1.1
+    volumes:
+      - 'source_code:/root/julia_code'
+    command: tail -f /dev/null
+    tty: true

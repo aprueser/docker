@@ -1,0 +1,3 @@
+simply run the following docker compose command:
+
+docker compose run hugoblog

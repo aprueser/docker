@@ -1,0 +1,23 @@
+version: '2'
+
+networks:
+  default:
+    name: app-local
+    external: true
+
+volumes:
+  hugo_blog:
+    name: hugo_blog
+    external: true
+
+services:
+  hugoblog:
+    container_name: hugoblog
+    hostname: hugoblog
+    image: klakegg/hugo:ext-alpine
+    volumes:
+      - 'hugo_blog:/src'
+    ports:
+      - '1313:1313'
+    entrypoint: 
+      - '/bin/bash' 
