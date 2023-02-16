@@ -1,4 +1,4 @@
-FROM julia:1.8.2-bullseye
+FROM julia:1.8.5-bullseye
 
 RUN set -eux; \
 	apt-get update; \
@@ -18,7 +18,7 @@ RUN set -eux; \
         vim -es -u /root/.vimrc -i NONE -c "PlugInstall" -c "qa"; \
 # Install some Julia packages
 	julia -e 'using Pkg; Pkg.update()'; \
-        julia -e 'using Pkg; Pkg.add.(["AbstractTrees", "Actors", "ArgCheck", "ArgParse", "Avro", "BenchmarkTools", "Chain", "CSV", "DataFrames", "DataFramesMeta", "DataStructures", "Dates", "DuckDB", "ErrorTypes", "HTTP", "InMemoryDatasets", "JSON3", "LazyArrays", "LazyJSON", "Logging", "MethodAnalysis", "MiniLoggers", "Parameters", "Parquet", "PkgTemplates", "Random", "Redis", "ResultTypes", "Revise", "RDKafka", "StatsBase", "StructTypes", "Temporal", "TimeSeries", "TimeZones", "XLSX"])'; \
+        julia -e 'using Pkg; Pkg.add.(["AbstractTrees", "Actors", "ArgCheck", "ArgParse", "Avro", "BenchmarkTools", "Chain", "CSV", "DataFrames", "DataFramesMeta", "DataStructures", "Dates", "Documenter", "DuckDB", "ErrorTypes", "HTTP", "InMemoryDatasets", "JSON3", "LazyArrays", "LazyJSON", "Logging", "MethodAnalysis", "MiniLoggers", "Parameters", "Parquet", "PkgTemplates", "Random", "Redis", "ResultTypes", "Revise", "RDKafka", "StatsBase", "StructTypes", "Temporal", "TimeSeries", "TimeZones", "XLSX"])'; \
 	julia -e 'using Pkg; Pkg.precompile()'; \
 # smoke test
 	julia --version
