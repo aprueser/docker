@@ -1,0 +1,43 @@
+set ruler
+set number
+set autoindent
+set noerrorbells
+set title
+set shell=/bin/bash
+
+" Set tabstop and shiftwidth to 4 spaces
+set ts=4 sw=4
+
+" Set the filename in the status bar
+set laststatus=2
+
+" Highlight cursor line underneath the cursor horizontally.
+set cursorline
+
+" Highlight cursor line underneath the cursor vertically.
+set cursorcolumn
+
+let g:vim_vue_plugin_config = {
+\'syntax': {
+\   'template': ['html'],
+\   'script': ['javascript', 'typescript'],
+\   'style': ['css', 'scss', 'sass', 'less'],
+\   'i18n': ['json', 'yaml'],
+\   'route': 'json', 
+\}, 
+\'full_syntax': ['json'],
+\'initial_indent': ['i18n', 'i18n.json', 'yaml'],
+\'attribute': 1,
+\'keyword': 1,
+\'foldexpr': 0,
+\'debug': 0, 
+\}
+
+runtime macros/matchit.vim 
+
+call plug#begin()
+
+Plug 'leafOfTree/vim-vue-plugin'
+
+call plug#end()
+

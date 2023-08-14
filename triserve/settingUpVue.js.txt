@@ -1,0 +1,135 @@
+Setup Current version of Vue: v3.2.47
+This requires node.js 16.0+
+  - Install:
+     npm init vue@latest
+   # Note: Include ESLint, Prettier, TypeScript, Vue Router, Pinia
+     cd <your-project-dir>
+     npm install
+
+   # If you are going to run inside a docker container using local network setup
+   #  you need to start the vite server process on the container IP, not localhost for it to be visible to the docker host
+   #  Edit the package.json file and add --host <docker container IP> to the dev and preview vite commands
+
+Add VueUse for easier vue functions
+  - Install:
+    npm i @vueuse/core
+
+  - Reference:
+    https://vueuse.org/
+
+Add VeeValidate for easy form validation
+   - Install:
+     npm install vee-validate@latest
+
+   - Reference:
+     https://vee-validate.logaretm.com/v4/
+
+Add yup for validation with VeeValidate 
+   - Install:
+     npm install --save yup
+
+   - Reference:
+     https://vijitail.dev/blog/form-validation-in-vue-using-yup
+
+Add yup-phone to add phone number validation
+   - Install: 
+     npm install --save yup-phone
+
+   - Reference: 
+     https://yup-phone.js.org/
+
+   - Example:
+     // Validate number for specified region only
+     const phoneSchema = yup.string()
+       .phone('US', true)  
+       .required();
+
+     (async () => {
+       console.log(await phoneSchema.isValid("9876543210")); // → true
+     })();
+
+Add vue-currency-input to make formatting numbers as currency in forms easy.
+   - Install: 
+     npm install vue-currency-input
+
+   - Reference: 
+     https://dm4t2.github.io/vue-currency-input/guide.html
+     
+
+Add Tailwind CSS
+  - Install:
+     npm install -D tailwindcss postcss autoprefixer
+   # Generate the tailwind.config.js file
+     npx tailwindcss init -p
+   # Configure the template paths inside the config
+     module.exports = {
+       content: [
+         "./index.html",
+         "./src/**/*.{vue,js,ts,jsx,tsx}",
+       ],
+       theme: {
+         extend: {},
+       },
+       plugins: [],
+     }
+   # Create new ./src/assets/index.css file
+     @tailwind base;
+     @tailwind components;
+     @tailwind utilities; 
+   # Add the new css file to ./src/assets/main.ts
+     import '@/assets/index.css'
+
+Add Flowbite UI & Flowbite Vue
+  - Ref: https://flowbite.com/docs/getting-started/vue/
+         https://flowbite-vue.com/pages/getting-started
+  - Install:
+     npm install flowbite flowbite-vue
+   # require flowbite as a plugin, and content requirement in tailwind.config.js
+     content: [
+        'node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx}',
+        'node_modules/flowbite/**/*.{js,jsx,ts,tsx}'
+     ]
+     plugins: [
+        require('flowbite/plugin')
+     ] 
+
+Add Heroicons
+  - Install:
+     npm install @heroicons/vue
+  - Available Libraries:
+     24x24 outline icons can be imported from @heroicons/vue/24/outline
+     24x24 solid icons can be imported from @heroicons/vue/24/solid
+     20x20 solid icons can be imported from @heroicons/vue/20/solid
+  - Use: 
+     <script setup>
+          import { BeakerIcon } from '@heroicons/vue/24/solid'
+     </script>
+
+     <template>
+       <div>
+         <BeakerIcon class="h-6 w-6 text-blue-500"/>
+         <p>...</p>
+       </div>
+     </template>
+  - Note:
+     Icons use an upper camel case naming convention and are always suffixed with the word Icon   
+     List of all Icons: https://unpkg.com/browse/@heroicons/vue/24/outline/
+     Image Reference: https://vue-hero-icons.netlify.app/
+
+Test the setup by running the vite test server:
+  npm run dev
+
+## Typescript development Note
+To let TypeScript properly infer types inside component options, we need to define components with defineComponent():
+
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  // type inference enabled
+  props: {
+    message: String
+  },
+  setup(props) {
+    props.message // type: string | undefined
+  }
+})

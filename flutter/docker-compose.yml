@@ -1,0 +1,28 @@
+version: '2'
+
+networks:
+  default:
+    name: app_local
+    external: true
+
+volumes:
+  triserve:
+    name: triserve
+    external: true
+
+
+services:
+  flutter:
+    container_name: flutter
+    hostname: flutter
+    image: flutterdev:0.1
+    volumes:
+      - 'triserve:/src'
+    ports:
+      - '8080:8080'
+      - '46361:46361'
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - "flutterdev:0.1"

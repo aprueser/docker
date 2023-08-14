@@ -1,0 +1,26 @@
+version: '2'
+
+networks:
+  default:
+    name: app_local
+    external: true
+
+volumes:
+  triserve:
+    name: triserve
+    external: true
+
+services:
+  triserve:
+    container_name: triserve
+    hostname: triserve
+    image: vuedev:0.5
+    volumes:
+      - 'triserve:/src'
+    ports:
+      - '5173:5173'
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - "vuedev:0.5"

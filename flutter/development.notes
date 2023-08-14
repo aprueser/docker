@@ -1,0 +1,6 @@
+# Develop using Stacked_CLI: https://stacked.filledstacks.com/
+  - Add Stacked_CLI: dart pub global activate stacked_cli
+  - Create project with stacked: stacked create app triserve -template=web
+  - Install Simple Gradiant Text: flutter pub add simple_gradient_text
+  - Install Flutter SVG: flutter pub add flutter_svg
+  - Install Google Fonts: flutter pub add google_fonts
